@@ -37,7 +37,6 @@ public class HistoryController {
     }
 
 
-
 //    @RequestMapping("/sample")
 //    public TreatmentHistory sample(){
 //        return new TreatmentHistory("treatment-id",
