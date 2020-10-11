@@ -113,7 +113,7 @@ public class TreatmentHistory{
         this.time = time;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

@@ -7,6 +7,7 @@ import com.example.treatmenthistoryservice.repository.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -34,6 +35,35 @@ public class HistoryController {
     public GenericResponse insertHistory(@RequestBody TreatmentHistory history){
         repository.save(history);
         return new GenericResponse(1, "success", history);
+    }
+
+    @RequestMapping("/get-history-by-id/{recordId}")
+    public GenericResponse getRecordById(@PathVariable String recordId){
+        GenericResponse response;
+        try{
+            response =  new GenericResponse(1, "succes", repository.findById(recordId).get());
+        }catch (Exception e){
+            return new GenericResponse(0, "exception occurred" + e.getMessage(), null);
+        }
+        return response;
+    }
+
+    @RequestMapping(value = "/update-history/{recordId}", method = RequestMethod.POST)
+    public GenericResponse updateHistory(@PathVariable String recordId, @RequestBody TreatmentHistory newRecord){
+        TreatmentHistory oldRecord;
+        try {
+            oldRecord = repository.findById(recordId).get();
+        }catch (Exception e){
+            return new GenericResponse(0, "Exception occurred" + e.getMessage(), null);
+        }
+        oldRecord.setTreatmentReportLink(newRecord.getTreatmentReportLink());
+        oldRecord.setPharmacyRecordId(newRecord.getPharmacyRecordId());
+        oldRecord.setBillAmount(newRecord.getBillAmount());
+        oldRecord.setPharmacyRecordId(newRecord.getPharmacyRecordId());
+        oldRecord.setStatus(newRecord.getStatus());
+        //this update the record in table see jpaRepository documentation
+        repository.save(oldRecord);
+        return new GenericResponse(1, "success", oldRecord);
     }
 
 
