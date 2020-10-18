@@ -33,8 +33,7 @@ public class HistoryController {
 
     @RequestMapping(value = "/insert-history", method = RequestMethod.POST)
     public GenericResponse insertHistory(@RequestBody TreatmentHistory history){
-        repository.save(history);
-        return new GenericResponse(1, "success", history);
+        return new GenericResponse(1, "success", repository.save(history));
     }
 
     @RequestMapping("/get-history-by-id/{recordId}")
@@ -67,18 +66,20 @@ public class HistoryController {
     }
 
 
-//    @RequestMapping("/sample")
-//    public TreatmentHistory sample(){
-//        return new TreatmentHistory("treatment-id",
-//                "physician-id",
-//                2100.00,
-//                "patient-id",
-//                "lab-id",
-//                "pharmacy-id-record",
-//                "treatment-record-link",
-//                new Date(2020, 10, 8),
-//                new Time(12,10,15),
-//                true);
-//    }
+    @RequestMapping("/sample")
+    public TreatmentHistory sample(){
+        return new TreatmentHistory("physician-id",
+                1020.00,
+                "patient-id",
+                "lab-id",
+                "pharmacy-id-record",
+                "treatment-record-link",
+                new Date(2020, 10, 8),
+                new Time(12,10,15),
+                true,
+                "pcm,bitadin,wax",
+                "x-ray,mri,brain imaging,ultrasound",
+                "take two medicine everyday");
+    }
 
 }
