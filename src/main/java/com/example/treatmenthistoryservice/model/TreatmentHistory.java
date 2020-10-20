@@ -27,21 +27,13 @@ public class TreatmentHistory{
     private String medicines;
     private String test;
     private String prescription;
+
     private boolean payment;
+
 
     public TreatmentHistory() {
     }
-    
-
-    public String getMedicines() {
-		return medicines;
-	}
-
-
-	public void setMedicines(String medicines) {
-		this.medicines = medicines;
-	}
-
+ 
 
 	public boolean isPayment() {
 		return payment;
@@ -50,29 +42,6 @@ public class TreatmentHistory{
 
 	public void setPayment(boolean payment) {
 		this.payment = payment;
-	}
-
-
-	public String getTest() {
-		return test;
-	}
-
-
-	public void setTest(String test) {
-		this.test = test;
-	}
-
-
-
-
-
-	public String getPrescription() {
-		return prescription;
-	}
-
-
-	public void setPrescription(String prescription) {
-		this.prescription = prescription;
 	}
 
 
@@ -164,11 +133,38 @@ public class TreatmentHistory{
         this.time = time;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
+    public boolean getStatus(){
+        return status;
+    }
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getMedicines() {
+        return medicines;
+    }
+
+    public void setMedicines(String medicines) {
+        this.medicines = medicines;
+    }
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+
+    public String getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
     }
 }

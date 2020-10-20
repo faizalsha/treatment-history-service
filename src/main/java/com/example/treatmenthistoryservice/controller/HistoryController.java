@@ -33,8 +33,7 @@ public class HistoryController {
 
     @RequestMapping(value = "/insert-history", method = RequestMethod.POST)
     public GenericResponse insertHistory(@RequestBody TreatmentHistory history){
-        repository.save(history);
-        return new GenericResponse(1, "success", history);
+        return new GenericResponse(1, "success", repository.save(history));
     }
 
     @RequestMapping("/get-history-by-id/{recordId}")
