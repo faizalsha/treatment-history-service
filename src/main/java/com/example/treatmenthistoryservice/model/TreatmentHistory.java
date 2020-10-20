@@ -24,11 +24,59 @@ public class TreatmentHistory{
     private Date date;
     private Time time;
     private boolean status;
+    private String medicines;
+    private String test;
+    private String prescription;
+    private boolean payment;
 
     public TreatmentHistory() {
     }
+    
 
-    public TreatmentHistory(String treatmentId, String physicianId, double billAmount, String patientId, String labId, String pharmacyRecordId, String treatmentReportLink, Date date, Time time, boolean status) {
+    public String getMedicines() {
+		return medicines;
+	}
+
+
+	public void setMedicines(String medicines) {
+		this.medicines = medicines;
+	}
+
+
+	public boolean isPayment() {
+		return payment;
+	}
+
+
+	public void setPayment(boolean payment) {
+		this.payment = payment;
+	}
+
+
+	public String getTest() {
+		return test;
+	}
+
+
+	public void setTest(String test) {
+		this.test = test;
+	}
+
+
+
+
+
+	public String getPrescription() {
+		return prescription;
+	}
+
+
+	public void setPrescription(String prescription) {
+		this.prescription = prescription;
+	}
+
+
+	public TreatmentHistory(String treatmentId, String physicianId, double billAmount, String patientId, String labId, String pharmacyRecordId, String treatmentReportLink, Date date, Time time, boolean status,String medicine, String test, String prescription) {
         this.treatmentId = treatmentId;
         this.physicianId = physicianId;
         this.billAmount = billAmount;
@@ -39,6 +87,9 @@ public class TreatmentHistory{
         this.date = date;
         this.time = time;
         this.status = status;
+        this.medicines = medicine;
+        this.prescription = prescription;
+        this.test = test;
     }
 
     public String getTreatmentId() {

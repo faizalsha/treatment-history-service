@@ -61,24 +61,29 @@ public class HistoryController {
         oldRecord.setBillAmount(newRecord.getBillAmount());
         oldRecord.setPharmacyRecordId(newRecord.getPharmacyRecordId());
         oldRecord.setStatus(newRecord.getStatus());
+        oldRecord.setMedicines(newRecord.getMedicines());
+        oldRecord.setPrescription(newRecord.getPrescription());
+        oldRecord.setTest(newRecord.getTest());
         //this update the record in table see jpaRepository documentation
         repository.save(oldRecord);
         return new GenericResponse(1, "success", oldRecord);
     }
 
+    //hospital-admin
+    @GetMapping("/get-all-records-to-be-paid")
+    public GenericResponse getAllRecords() 
+    {
+    	System.out.println("Callrd get all records");
+    	return new GenericResponse(1,"success",repository.findAll());
+    }
+    
+    @RequestMapping("/update-payment/{id}")
+    public GenericResponse changeStatusPayment(@PathVariable String id)
+    {
+    	repository.updatePayment(id);
+    	return new GenericResponse(1,"Paid",null);
+    	
+    }
 
-//    @RequestMapping("/sample")
-//    public TreatmentHistory sample(){
-//        return new TreatmentHistory("treatment-id",
-//                "physician-id",
-//                2100.00,
-//                "patient-id",
-//                "lab-id",
-//                "pharmacy-id-record",
-//                "treatment-record-link",
-//                new Date(2020, 10, 8),
-//                new Time(12,10,15),
-//                true);
-//    }
 
 }
